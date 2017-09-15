@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AdminFanaticWebsite</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="nav-md" style="background-color: #F7F7F7 !important;">
+    <div class="container body">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+      <% end %>
+  	  <div class="main_container" >
+      <% if logged_in? == true %>
+    	  <div class="col-md-3 left_col" >
+          <%= render 'layouts/asidebar' %> 
+        </div>
+        <div class="right-col" >
+          <%= render 'layouts/navbar' %> 
+          <div class="right_col" role="main">
+            <%= yield %>
+          </div>
+        </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
+      </div>
+    </div>
+  <%= javascript_include_tag 'application' %>
+  
+  </body>
+</html>

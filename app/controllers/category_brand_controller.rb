@@ -1,0 +1,2 @@
+class CategoryBrandController < ApplicationController
+end

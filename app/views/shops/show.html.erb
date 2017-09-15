@@ -1,0 +1,183 @@
+<div class="col-md-6 col-xs-12">
+	<div class="x_panel">
+		<div class="x_title">
+			<h2>Shop Information <small>your shop information</small></h2>
+			<div class="clearfix"></div>
+		</div>
+		<div class="x_content">
+	<!-- start form for validation -->
+				<div id="demo-form" data-parsley-validate>
+					<div class="form-group">
+		  		<label for="fullname">Name Shop* :</label>
+		  		<span for="fullname"><%=@shop.name%></span>
+		  		</div>
+		  		<div class="form-group">
+		  		<label for="fullname">Address* :</label>
+		  		<span for="fullname"><%=@shop.address%></span>
+		  		</div>
+		  		<div class="form-group">
+		  		<label for="email">Type* :</label>
+		  		<span for="fullname">Personal</span>
+		  		</div>
+				</div>
+		</div>
+	</div>
+	<div class="x_panel">
+		<div class="x_title">
+			<h2>Shop Owner <small>personal info</small></h2>
+			<div class="clearfix"></div>
+		</div>
+		<div class="x_content">
+	<!-- start form for validation -->
+				<div id="demo-form" data-parsley-validate>
+					<div class="form-group">
+		  		<label for="fullname">Name Owner* :</label>
+		  		<span for="fullname"><%=@admin.name%></span>
+		  		</div>
+		  		<div class="form-group">
+		  		<label for="fullname">Email* :</label>
+		  		<span for="fullname"><%=@admin.email%></span>
+		  		</div>
+		  		<div class="form-group">
+		  		<label for="fullname">Phone* :</label>
+		  		<span for="fullname">12345678</span>
+		  		</div>
+		  		<div class="form-group">
+		  		<label for="fullname">Role :</label>
+		  		<span for="fullname"><%=@admin.role%></span>
+		  		</div>
+				</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Assistant of This Shop</h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Settings 1</a>
+            </li>
+            <li><a href="#">Settings 2</a>
+            </li>
+          </ul>
+        </li>
+        <li><a class="close-link"><i class="fa fa-close"></i></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        	<% @assistant.each do |assist| %>
+	          <tr>
+	            <td scope="row"><%=assist.id%></td>
+	            <td><%=assist.name%></td>
+	            <td><%=assist.role%></td>
+	            <td><%=assist.phone%></td>
+	            <td><%=assist.email%></td>
+	            <td><%= link_to 'Delete', admin_path(assist), method: 'Delete' %></td>
+	          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="x_panel">
+    <div class="x_title">
+      <h2><i class="fa fa-bars"></i> Tabs </h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Settings 1</a>
+            </li>
+            <li><a href="#">Settings 2</a>
+            </li>
+          </ul>
+        </li>
+        <li><a class="close-link"><i class="fa fa-close"></i></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <div class="" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab1" class="nav nav-tabs bar_tabs right" role="tablist">
+          <li role="presentation" class="active"><a href="#tab_content11" id="home-tabb" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Information</a>
+          </li>
+          <li role="presentation" class=""><a href="#tab_content22" role="tab" id="profile-tabb" data-toggle="tab" aria-controls="profile" aria-expanded="false">Revenue</a>
+          </li>
+        </ul>
+        <div id="myTabContent2" class="tab-content">
+          <div role="tabpanel" class="tab-pane fade active in" id="tab_content11" aria-labelledby="home-tab">
+          	<% if @shop.logo %>
+              <%= image_tag @shop.logo, class: 'class="img-circle profile_img',style: 'width: 20%;' %>
+            <% end %>
+            <p>
+            	<div class="form-group">
+		  					<label for="email">Slogan :</label>
+		  					<span for="fullname"><%= @shop.slogan %></span>
+		  				</div>
+		  				<div class="form-group">
+		  					<label for="email">Description :</label>
+		  					<span for="fullname"><%= @shop.description %></span>
+		  				</div>
+            </p>
+          </div>
+          <div role="tabpanel" class="tab-pane fade" id="tab_content22" aria-labelledby="profile-tab">
+          	<div class="col-md-6 col-sm-6 col-xs-12">
+	            <div class="form-group">
+			  				<label for="email">Total:</label>
+			  				<span for="fullname">$ 123</span>
+			  			</div>
+			  			<div class="form-group">
+			  				<label for="email">This month:</label>
+			  				<span for="fullname">$ 123</span>
+			  			</div>
+			  			<div class="form-group">
+			  				<label for="email">Revenue Increase:</label>
+			  				<span for="fullname">$ 123</span>
+			  			</div>
+			  		</div>
+			  		<div class="col-md-6 col-sm-6 col-xs-12">
+	            <div class="form-group">
+			  				<label for="email">Orders quantity (this month):</label>
+			  				<span for="fullname">123</span>
+			  			</div>
+			  			<div class="form-group">
+			  				<label for="email">Rating:</label>
+			  				<span for="fullname">$ 123</span>
+			  			</div>
+			  			<a href="#">More details</a>
+			  		</div>
+	        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+       
+
